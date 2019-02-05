@@ -101,7 +101,7 @@ Public Class _Default
         Dim count As Integer
         Dim mdgrpID As Integer
 
-        update = "Update [Centlec08_v2].[dbo].[MDM_Devices] set [Device _ID] = @DeviceID, [Device Seq No] = @DeviceSeqNo, [Configuration Name] = @ConfigurationName, [Device Name] =@DeviceName, [OS] = @os, [OS Version] = @OSVersion, [Model] = @Model, [IMEI Number] = @IMEINumber, [IMSI Number] = @IMSINumber, [ICCID Number] = @ICCIDNumber, [Serial Number] = @SerialNumber, [Mobilock Pro Version] = @MbilockProVersion, [MD Group]=@MDGroup, [Profile Name]=@ProfileName, [Phone Number] = @PhoneNumber, [Last Seen] = @LastSeen, [Added On] = @AddedOn, [Last Location Address] = @LastLocationAddress, [Last Location Latitude] = @LastLocationLatitude, [Last Location Longitude] = @LastLocationLongitude, [Last Location Time] = @LastLocationTime, [Status] = @Status, [Monthly Data Usage (As Per Date)] = @MonthlyDataUsage, [TimeZone] = @TimeZone, [Notes] = @Notes, [Licence Code] = @LicenceCode, [Wifi Mac Address] = @WifiMacAddress, [Wifi Frequency Band] = @WifiFrequencyBand, [Device Firmware] = @DeviceFirmware, [Country Code] = @CountryCode, [Profile Name1] = @ProfileName1, [BA_GroupID] = @BA_GroupID where [Device _ID] =  @DeviceID2"
+        update = "Update [Centlec08_v2].[dbo].[MDM_Devices] set [Device _ID] = @Device_ID, [Device Seq No] = @DeviceSeqNo, [Configuration Name] = @ConfigurationName, [Device Name] =@DeviceName, [OS] = @os, [OS Version] = @OSVersion, [Model] = @Model, [IMEI Number] = @IMEINumber, [IMSI Number] = @IMSINumber, [ICCID Number] = @ICCIDNumber, [Serial Number] = @SerialNumber, [Mobilock Pro Version] = @MbilockProVersion, [MD Group]=@MDGroup, [Profile Name]=@ProfileName, [Phone Number] = @PhoneNumber, [Last Seen] = @LastSeen, [Added On] = @AddedOn, [Last Location Address] = @LastLocationAddress, [Last Location Latitude] = @LastLocationLatitude, [Last Location Longitude] = @LastLocationLongitude, [Last Location Time] = @LastLocationTime, [Status] = @Status, [Monthly Data Usage (As Per Date)] = @MonthlyDataUsage, [TimeZone] = @TimeZone, [Notes] = @Notes, [Licence Code] = @LicenceCode, [Wifi Mac Address] = @WifiMacAddress, [Wifi Frequency Band] = @WifiFrequencyBand, [Device Firmware] = @DeviceFirmware, [Country Code] = @CountryCode, [Profile Name1] = @ProfileName1, [BA_GroupID] = @BA_GroupID where [Device _ID] =  @DeviceID2"
         insert = "insert into [Centlec08_v2].[dbo].[MDM_Devices] ([Device _ID], [Device Seq No], [Configuration Name], [Device Name] , [OS] , [OS Version] , [Model], [IMEI Number] , [IMSI Number] , [ICCID Number] , [Serial Number] , [Mobilock Pro Version] , [MD Group], [Profile Name], [Phone Number], [Last Seen] , [Added On] , [Last Location Address] , [Last Location Latitude] , [Last Location Longitude] , [Last Location Time] , [Status] , [Monthly Data Usage (As Per Date)] , [TimeZone] , [Notes], [Licence Code] , [Wifi Mac Address] , [Wifi Frequency Band] , [Device Firmware] , [Country Code] , [Profile Name1] , [BA_GroupID], [BA_ConditionID], [BA_StatusID], [BA_Status], [BA_Condition]) " &
             "Values(@Device_ID, @DeviceSeqNo, @ConfigurationName, @DeviceName, @os, @OSVersion, @Model, @IMEINumber, @IMSINumber, @ICCIDNumber, @SerialNumber, @MbilockProVersion, @MDGroup, @ProfileName, @PhoneNumber, @LastSeen, @AddedOn, @LastLocationAddress, @LastLocationLatitude, @LastLocationLongitude, @LastLocationTime, @Status, @MonthlyDataUsage, @TimeZone, @Notes, @LicenceCode, @WifiMacAddress, @WifiFrequencyBand, @DeviceFirmware, @CountryCode, @ProfileName1, @BA_GroupID, @BA_ConditionID, @BA_StatusID, @BA_Status, @BA_Condition)"
         'wb = New XLWorkbook(FileUpload1.PostedFile.InputStream)
@@ -188,13 +188,13 @@ Public Class _Default
             Try
                 If devId >= 1 Then
                     cmd2.ExecuteNonQuery()
-                    lblResult.Text = " Successful upload: " & "Total Rows: " & row - 1
+                    lblResult.Text = " Successful: " & "Total Rows: " & row - 1
                     lblResult.Visible = True
                 End If
             Catch ex As Exception
                 If devId <> "" Then
-                    errLog = errLog & vbNewLine & ex.Message
-                    lblResult.Text = errLog & " " & "Rowcount: " & row
+                    ''errLog = errLog & vbNewLine & ex.Message
+                    lblResult.Text = "Error at Row: " & row
                     lblResult.Visible = True
                     Exit Sub
                 End If
